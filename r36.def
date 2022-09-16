@@ -1,10 +1,29 @@
 Bootstrap: docker
 From: rocker/verse:3.6
 
+# Latest error
+# libfontconfig1-dev set to manually installed.
+# libxt-dev is already the newest version (1:1.1.5-1).
+# libxt-dev set to manually installed.
+# libcairo2-dev is already the newest version (1.14.8-1+deb9u1).
+# libxml2-dev is already the newest version (2.9.4+dfsg1-2.2+deb9u7).
+# libssl-dev is already the newest version (1.1.0l-1~deb9u6).
+# Some packages could not be installed. This may mean that you have
+# requested an impossible situation or if you are using the unstable
+# distribution that some required packages have not yet been created
+# or been moved out of Incoming.
+# The following information may help to resolve the situation:
+
+# The following packages have unmet dependencies:
+#  libgit2-dev : Depends: libcurl4-gnutls-dev but it is not going to be installed
+# E: Unable to correct problems, you have held broken packages.
+# FATAL:   While performing build: while running engine: exit status 100
+# 
+ 
+# works before here, but possibly not afterwards
 %post
     apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get upgrade -y \
-    # works before here, but possibly not afterwards
     && apt-get install -y apt-utils \
         openssh-client \
         gnupg2 \
