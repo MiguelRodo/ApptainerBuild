@@ -1,0 +1,87 @@
+\
+        && apt-get -y install \
+            python3-pip \
+            libcurl4-gnutls-dev \
+            libgit2-dev \
+            apt-get build-dep libcurl4-openssl-dev \
+            libcurl4-openssl-dev \
+            libssl-dev \
+            libxml2-dev \
+            libxt-dev \
+            libfontconfig1-dev \
+            libcairo2-dev \
+        && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* \
+        && python3 -m pip --no-cache-dir install radian \
+        && install2.r --error --skipinstalled --ncpus -1 \
+           languageserver \
+           httpgd \
+           jsonlite \
+           devtools \
+           usethis \
+        && rm -rf /tmp/downloaded_packages \
+        && curl -LO https://quarto.org/download/latest/quarto-linux-amd64.deb \
+        && gdebi -n quarto-linux-amd64.deb
+
+  
+  # using the solution from here: https://jeroen.cran.dev/gert/
+  add-apt-repository ppa:cran/libgit2 \
+  && apt-get update \
+  && apt-get install libgit2-dev \
+  && apt-get -y install \
+            python3-pip \
+            libgit2-dev \
+            libcurl4-openssl-dev \
+            libssl-dev \
+            libxml2-dev \
+            libxt-dev \
+            libfontconfig1-dev \
+            libcairo2-dev
+# the above seemed promising, but gave me this error message:
+INFO:    Starting build...
+INFO:    Verifying bootstrap image r36-debug.sif
+WARNING: integrity: signature not found for object group 1
+WARNING: Bootstrap image could not be verified, but build will continue.
+INFO:    Running post scriptlet
++ add-apt-repository ppa:cran/libgit2
+/.post.script: 1: /.post.script: add-apt-repository: not found
+FATAL:   While performing build: while running engine: exit status 127
+
+# using the solution from here:
+# https://stackoverflow.com/questions/34706247/unmet-dependencies-for-libcurl4-openssl-dev
+  && apt-get -y install \
+            python3-pip \
+            apt-get build-dep libcurl4-openssl-dev \
+            libcurl4-openssl-dev \
+            libgit2-dev \
+            libssl-dev \
+            libxml2-dev \
+            libxt-dev \
+            libfontconfig1-dev \
+            libcairo2-dev
+# I get this error message trying the above fix:
+apt-get -y install python3-pip apt-get build-dep libcurl4-openssl-dev libcurl4-openssl-dev libgit2-dev libssl-dev libxml2-dev libxt-dev libfontconfig1-dev libcairo2-dev
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+E: Unable to locate package apt-get
+E: Unable to locate package build-dep
+FATAL:   While performing build: while running engine: exit status 100
+# 
+
+apptainer build r36-debugged.sif r36-debug.def
+
+
+# delete openssl-dev
+    apt-get -y install \
+      python3-pip \
+      libcurl4-gnutls-dev \
+      libgit2-dev \
+      libssl-dev \
+      libxml2-dev \
+      libxt-dev \
+      libfontconfig1-dev \
+      libcairo2-dev \
+
+
+
+apptainer build r36-debugged2.sif r36-debug2.def

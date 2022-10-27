@@ -1,0 +1,11 @@
+Bootstrap: localimage
+From: r36-debug.sif
+
+%post
+    apt-get -y install \
+      python3-pip \
+      libssl-dev \
+      libxml2-dev \
+      libxt-dev \
+      libfontconfig1-dev \
+      libcairo2-dev

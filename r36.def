@@ -19,12 +19,12 @@ From: rocker/verse:3.6
 # E: Unable to correct problems, you have held broken packages.
 # FATAL:   While performing build: while running engine: exit status 100
 # 
- 
-# works before here, but possibly not afterwards
+# should probably just install libcurl4-gnutls-dev
 %post
     apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get upgrade -y \
     && apt-get install -y apt-utils \
+        gdebi-core \
         openssh-client \
         gnupg2 \
         dirmngr \
@@ -63,22 +63,21 @@ From: rocker/verse:3.6
         manpages \
         manpages-dev \
         init-system-helpers \
-        && apt-get -y install \
-            python3-pip \
-            libgit2-dev \
-            libcurl4-openssl-dev \
-            libssl-dev \
-            libxml2-dev \
-            libxt-dev \
-            libfontconfig1-dev \
-            libcairo2-dev \
-        && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* \
-        && python3 -m pip --no-cache-dir install radian \
-        && install2.r --error --skipinstalled --ncpus -1 \
-           languageserver \
-           httpgd \
-           jsonlite \
-           devtools \
-           usethis \
-        && rm -rf /tmp/downloaded_packages
+    && apt-get -y install \
+      python3-pip \
+      libssl-dev \
+      libxml2-dev \
+      libxt-dev \
+      libfontconfig1-dev \
+      libcairo2-dev \
+    && install2.r --error --skipinstalled --ncpus -1 \
+          languageserver \
+          jsonlite \
+          devtools \
+          usethis \
+    && install2.r --error --skipinstalled --ncpus -1 \
+    --repos https://packagemanager.rstudio.com/cran/latest \
+    renv \
+    && rm -rf /tmp/downloaded_packages
+    
     
