@@ -70,6 +70,12 @@ From: rocker/verse:4.2.1
             libclang-dev \
             ttf-mscorefonts-installer \
             fonts-roboto \
+        && cd /tmp \
+        && git clone https://github.com/ImageMagick/ImageMagick.git ImageMagick-7.1.0 \
+        && cd ImageMagick-7.1.0 \
+        && ./configure \
+        && make \
+        && make install \
         && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* \
         && python3 -m pip --no-cache-dir install radian \
         && install2.r --error --skipinstalled --ncpus -1 \
