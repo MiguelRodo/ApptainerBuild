@@ -84,6 +84,4 @@ From: rocker/verse:4.2.1
            renv \
            yaml \
         && rm -rf /tmp/downloaded_packages \
-        && curl -LO https://quarto.org/download/latest/quarto-linux-amd64.deb \
-        && gdebi -n quarto-linux-amd64.deb
-         
+        && wget -O- https://aka.ms/install-vscode-server/setup.sh | sh

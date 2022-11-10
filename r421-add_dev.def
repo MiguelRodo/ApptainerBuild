@@ -1,0 +1,8 @@
+Bootstrap: localimage
+From: r421-plain.sif
+
+%post
+    curl -LO https://quarto.org/download/latest/quarto-linux-amd64.deb \
+    && gdebi -n quarto-linux-amd64.deb
+         
+    
