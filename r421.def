@@ -83,5 +83,5 @@ From: rocker/verse:4.2.1
            usethis \
            renv \
            yaml \
-        && rm -rf /tmp/downloaded_packages \
-        && wget -O- https://aka.ms/install-vscode-server/setup.sh | sh
+        && rm -rf /tmp/downloaded_packages 
+        

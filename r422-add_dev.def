@@ -3,4 +3,9 @@ From: r422-plain.sif
 
 %post
     curl -LO https://quarto.org/download/latest/quarto-linux-amd64.deb \
-    && gdebi -n quarto-linux-amd64.deb
+    && gdebi -n quarto-linux-amd64.deb \
+    && wget -qO \
+    "/usr/local/bin/code-server" \
+    "https://aka.ms/vscode-server-launcher/x86_64-unknown-linux-gnu" \
+    && chmod a+x "/usr/local/bin/code-server"
+         

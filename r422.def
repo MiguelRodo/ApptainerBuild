@@ -82,9 +82,6 @@ From: rocker/verse:4.2.2
            usethis \
            renv \
            yaml \
-        && rm -rf /tmp/downloaded_packages \
-        && wget -qO \
-        "/usr/local/bin/code-server" \
-        "https://aka.ms/vscode-server-launcher/x86_64-unknown-linux-gnu" \
-        && chmod a+x "/usr/local/bin/code-server"
-         
+        && rm -rf /tmp/downloaded_packages
+        
+
