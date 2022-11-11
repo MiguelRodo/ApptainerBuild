@@ -74,4 +74,4 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
   ttf-mscorefonts-installer \
   fonts-roboto \
   && apt-get install - git \
-  && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
+  && apt-get autoremove -y && apt-get clean -y
