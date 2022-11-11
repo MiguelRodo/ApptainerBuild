@@ -73,5 +73,5 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
   libclang-dev \
   ttf-mscorefonts-installer \
   fonts-roboto \
-  #&& apt-get install - git \
-  && apt-get autoremove -y && apt-get clean -y
+  && apt-get install -y git \
+  && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
