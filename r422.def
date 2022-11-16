@@ -49,6 +49,8 @@ From: rocker/verse:4.2.2
         manpages-dev \
         librdf0-dev \
         init-system-helpers \
+        # install for zen4R
+        && apt-get -y install libsecret-1-0 \
         && apt-get -y install \
             python3-pip \
             libgit2-dev \
