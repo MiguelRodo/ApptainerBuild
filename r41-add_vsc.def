@@ -1,5 +1,0 @@
-Bootstrap: localimage
-From: r41-plain.sif
-
-%post
-    wget -O- https://aka.ms/install-vscode-server/setup.sh | sh
