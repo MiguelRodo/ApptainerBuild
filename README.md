@@ -27,3 +27,5 @@ apptainer build ar42.sif r42.def
 This will create a container image named `ar42.sif` based on the definition file `r42.def`. To create a container using Singularity, replace `apptainer` with `singularity`. 
 
 Built images are available in the Google Shared drive `StoreContainer`. 
+
+Does it work fine on a
