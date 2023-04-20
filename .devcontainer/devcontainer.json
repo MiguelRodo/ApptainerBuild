@@ -5,7 +5,7 @@
 		"ghcr.io/devcontainers/features/git:1": {},
 		"ghcr.io/devcontainers/features/github-cli:1": {},
 		"ghcr.io/rocker-org/devcontainer-features/pandoc:1": {}
-	}
+	},
 
 	// Features to add to the dev container. More info: https://containers.dev/implementors/features.
 	// "features": {},
@@ -14,7 +14,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "uname -a",
+	"postCreateCommand": "sh .devcontainer/install-apptainer.sh",
 
 	// Configure tool-specific properties.
 	// "customizations": {},
