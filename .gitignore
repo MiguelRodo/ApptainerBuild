@@ -1,2 +1,4 @@
 *sif
 src/.git
+src/**/*
+src
