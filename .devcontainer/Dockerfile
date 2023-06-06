@@ -1,8 +1,9 @@
-FROM mcr.microsoft.com/devcontainers/base:jammy
-RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-  && apt-get upgrade -y
-RUN sudo apt update \
-  && sudo apt install -y software-properties-common \
-  && sudo add-apt-repository -y ppa:apptainer/ppa \
-  && sudo apt update \
-  && sudo apt install -y apptainer
+FROM mcr.microsoft.com/devcontainers/universal:latest
+
+COPY src/docker/ubuntu /project/src
+
+WORKDIR /project/src
+
+RUN sh install_apptainer.sh
+RUN sh install_gh.sh
+RUN sh install_vscode.sh
