@@ -8,5 +8,5 @@ sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.mi
 rm -f packages.microsoft.gpg
 apt install -y apt-transport-https
 apt update -y
-apt install -y code-insiders # or code-insiders
-apt install -y code # or code-insiders
+apt install -y code-insiders 
+apt install -y code 
