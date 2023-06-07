@@ -9,12 +9,12 @@ apt-get install -y \
   libglpk40 \
   libicu-dev \
   libicu[0-9][0-9] \
-  libopenssl-dev \
+  libsodium-dev \
   libssl-dev \
   libstdc++6 \
   libudunits2-dev \
   libxml2-dev \
   libxt-dev \
-  libsodium-dev \
   locales \
   zlib1g
+  
