@@ -59,5 +59,4 @@ sudo apt-get install -y apt-utils \
        cargo \
        libfreetype6-dev \
        libclang-dev \
-       ttf-mscorefonts-installer \
        fonts-roboto 

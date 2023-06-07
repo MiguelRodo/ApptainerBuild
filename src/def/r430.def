@@ -1,0 +1,6 @@
+Bootstrap: docker
+From: rocker/verse:4.3.0
+
+%environment
+    export APPTAINER_BUILD_DATE=date
+
