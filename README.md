@@ -1,4 +1,4 @@
-# Minor22Container
+# ApptainerBuild
 
 This repository houses `.def` files to create Singularity/Apptainer images.
 
