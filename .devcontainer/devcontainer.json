@@ -1,4 +1,4 @@
 {
 	"image": "mcr.microsoft.com/devcontainers/universal:latest",
-	"postCreateCommand": "sh src/docker/ubuntu/install_apptainer.sh"
+	"postCreateCommand": "sh src/docker/ubuntu/install-apptainer.sh"
 }
