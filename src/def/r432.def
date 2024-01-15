@@ -7,6 +7,7 @@ From: ghcr.io/rocker-org/devcontainer/geospatial:4
 %files
     src/install/install-r-libs.sh
     src/install/install-vscode.sh
+    src/install/install-xet.sh
 
 %post
     apt-get update && export DEBIAN_FRONTEND=noninteractive
