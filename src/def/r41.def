@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: ghcr.io/rocker-org/devcontainer/geospatial:4
+From: ghcr.io/rocker-org/devcontainer/geospatial:4.1
 
 %environment
     export APPTAINER_BUILD_DATE=date
@@ -12,6 +12,7 @@ From: ghcr.io/rocker-org/devcontainer/geospatial:4
 %post
     apt-get update && export DEBIAN_FRONTEND=noninteractive
     apt-get upgrade -y
-    sh src/install/install-r-libs.sh
-    sh src/install/install-vscode.sh
+    src/install/install-r-libs.sh
+    src/install/install-vscode.sh
+    src/install/install-xet.sh
     apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*

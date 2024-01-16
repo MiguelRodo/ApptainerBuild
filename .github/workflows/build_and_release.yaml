@@ -1,0 +1,54 @@
+name: Build and release
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'src/def/36.def'
+      - 'src/def/40.def'
+      - 'src/def/41.def'
+      - 'src/def/42.def'
+      - 'src/def/43.def'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "R versions to build"
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Set up VS Code Development Container
+      uses: microsoft/vscode-dev-containers/setup-vscode@v1
+      with:
+        dcfile: .devcontainer/devcontainer.json
+
+    - name: Build and release if definition files have changed
+      if: github.event_name != 'workflow_dispatch'
+      run: |
+        echo "Creating new images if definition files have changed"
+        set -e
+        CHANGED_FILES=$(git diff --name-only HEAD~1)
+        for FILE in $CHANGED_FILES
+        do
+          if echo "$FILE" | grep -q "src/def/.*\.def"; then
+            VERSION=${FILE:8:2}
+            ./build_and_release.sh $VERSION
+          fi
+        done
+
+    - name: Build and release manually-selected versions
+      if: github.event_name == 'workflow_dispatch'
+      run: |
+        echo "Creating new images for manually-selected versions"
+        set -e
+        IFS=',' read -ra VERSIONS <<< "${{ github.event.inputs.version }}"
+        for VERSION in "${VERSIONS[@]}"; do
+          echo "Building version $VERSION"
+          ./build_and_release.sh $VERSION
+        done
