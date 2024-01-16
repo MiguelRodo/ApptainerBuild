@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Last modified: 2024 Jan 11
+# Last modified: 2024 Jan 16
 # Source: https://xethub.com/assets/docs/getting-started/install
 
 # 1. Installs `xet` cli
