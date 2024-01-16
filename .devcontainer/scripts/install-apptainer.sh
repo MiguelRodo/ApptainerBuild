@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # source: https://apptainer.org/docs/admin/main/installation.html
 # date created: 2023 June 06
 # date last modified: 2023 June 07

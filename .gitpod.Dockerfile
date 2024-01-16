@@ -11,5 +11,5 @@ COPY .devcontainer/scripts /project/scripts
 
 WORKDIR /project/scripts
 
-RUN sh install-apptainer.sh
-RUN sh install-gh.sh
+RUN install-apptainer.sh
+RUN install-gh.sh

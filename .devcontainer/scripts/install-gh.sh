@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # source: https://github.com/cli/cli/blob/trunk/docs/install_linux.md
 # date: 2023 05 04
 type -p curl >/dev/null || (sudo apt-get update && sudo apt-get install curl -y)
