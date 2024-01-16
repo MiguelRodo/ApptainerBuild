@@ -19,7 +19,7 @@ else
     version_dot="$version_orig"
 fi
 
-if ! [[ "$version_dot" =~ ^(3.6|4.1|4.2|4.3)$ ]]; then
+if ! [[ "$version_dot" =~ ^(3.6|4.0|4.1|4.2|4.3)$ ]]; then
     echo "Version must be one of 3.6, 4.1, 4.2, 4.3."
     echo "For each of these, the latest patch version is used."
     echo "For example, 3.6 refers to the latest 3.6.x version, which is 3.6.3."
