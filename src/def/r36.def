@@ -16,7 +16,7 @@ From: rocker/verse:3.6.3
     apt-get upgrade -y
     src/install/install-r-libs.sh
     src/install/install-r-radian-363.sh
-    src/install/install-vscode.sh
+    src/install/install-git.sh
     src/install/install-xet.sh
     apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
