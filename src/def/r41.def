@@ -7,6 +7,7 @@ From: ghcr.io/rocker-org/devcontainer/geospatial:4.1
 %files
     src/install/install-r-libs.sh
     src/install/install-vscode.sh
+    src/install/install-git.sh
     src/install/install-xet.sh
 
 %post
@@ -15,5 +16,6 @@ From: ghcr.io/rocker-org/devcontainer/geospatial:4.1
     apt-get upgrade -y
     src/install/install-r-libs.sh
     src/install/install-vscode.sh
+    src/install/install-git.sh
     src/install/install-xet.sh
     apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
