@@ -29,3 +29,5 @@ gh release create \
   "r${version_dot}.x" "sif/r${version_dotless}x.sif" \
   --title "r${version_dot}.x" \
   --notes "Apptainer image for R${version_dot}.x"
+
+rm -rf "sif/r${version_dotless}x.sif"
