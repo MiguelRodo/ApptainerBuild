@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # source: https://code.visualstudio.com/docs/setup/linux#_debian-and-ubuntu-based-distributions
 # date created: 2023 June 06
 # last updated: 2023 June 06
