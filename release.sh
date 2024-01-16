@@ -26,6 +26,11 @@ fi
 
 version_dotless="${version_dot//./}"
 
+# delete the release if it exists
+if gh release view "r${version_dot}.x" > /dev/null 2>&1; then
+    gh release delete "r${version_dot}.x" -y
+fi
+
 # create the release
 gh release create \
   "r${version_dot}.x" "sif/r${version_dotless}x.sif" \
