@@ -6,4 +6,5 @@ apt-get install -y software-properties-common
 add-apt-repository -y ppa:git-core/ppa
 apt-get update
 apt-get upgrade -y
+apt-get install -y libc6 libpcre2-8-0
 apt-get install -y git
