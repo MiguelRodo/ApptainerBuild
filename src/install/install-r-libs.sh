@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 apt-get install -y \
   fonts-roboto \
   libcairo2-dev \

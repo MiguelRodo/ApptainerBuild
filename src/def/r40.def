@@ -11,6 +11,7 @@ From: rocker/verse:4.0.5
     src/install/install-xet.sh
 
 %post
+    set -e
     apt-get update && export DEBIAN_FRONTEND=noninteractive
     apt-get upgrade -y
     src/install/install-r-libs.sh

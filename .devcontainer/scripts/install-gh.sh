@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # source: https://github.com/cli/cli/blob/trunk/docs/install_linux.md
 # date: 2023 05 04
+set -e
 type -p curl >/dev/null || (sudo apt-get update && sudo apt-get install curl -y)
 curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
 && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
