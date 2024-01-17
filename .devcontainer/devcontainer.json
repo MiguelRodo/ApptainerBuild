@@ -1,8 +1,6 @@
 {
 	"image": "mcr.microsoft.com/devcontainers/universal:latest",
 	"features": {
-		"ghcr.io/MiguelRodo/DevContainerFeatures/apptainer": {
-			"version": "latest"
-		}
+		"ghcr.io/MiguelRodo/DevContainerFeatures/apptainer": {}
 	}
 }
