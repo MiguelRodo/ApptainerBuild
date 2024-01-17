@@ -1,4 +1,8 @@
 {
 	"image": "mcr.microsoft.com/devcontainers/universal:latest",
-	"postCreateCommand": ".devcontainer/scripts/install-apptainer.sh"
+		"features": {
+			"ghcr.io/MiguelRodo/DevContainerFeatures/apptainer:1": {
+				"version": "latest"
+			}
+		}
 }
