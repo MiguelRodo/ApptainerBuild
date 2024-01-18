@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# add github-login script to
+# enable plain-text credential store
+
 cat > /usr/local/bin/github-login \
 << 'EOF'
 #!/usr/bin/env bash
