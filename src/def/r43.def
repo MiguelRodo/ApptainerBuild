@@ -11,6 +11,7 @@ From: ghcr.io/rocker-org/devcontainer/geospatial:4.3
     src/install/install-git-xet.sh
     src/install/install-gh.sh
     src/install/install-mult-repos.sh
+    src/install/install-github-login.sh
 
 %post
     set -e
