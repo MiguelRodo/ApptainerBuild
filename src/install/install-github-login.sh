@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 # add github-login script to
 # enable plain-text credential store
 
