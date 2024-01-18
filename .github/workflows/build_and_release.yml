@@ -29,9 +29,6 @@ jobs:
     - name: Install apptainer
       run: .devcontainer/scripts/install-apptainer.sh
 
-    - name: Authenticate with GitHub CLI
-      run: gh auth login --with-token <<< "${{ secrets.GH_TOKEN }}"
-    
     - name: Build and release manually-selected versions
       if: github.event_name == 'workflow_dispatch'
       run: |
