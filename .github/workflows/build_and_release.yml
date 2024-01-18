@@ -29,20 +29,6 @@ jobs:
     - name: Install apptainer
       run: .devcontainer/scripts/install-apptainer.sh
     
-    - name: Build and release if definition files have changed
-      if: github.event_name != 'workflow_dispatch'
-      run: |
-        echo "Creating new images if definition files have changed"
-        set -e
-        CHANGED_FILES=$(git diff --name-only HEAD~1)
-        for FILE in $CHANGED_FILES
-        do
-          if echo "$FILE" | grep -q "src/def/.*\.def"; then
-            VERSION=${FILE:8:2}
-            ./build_and_release.sh $VERSION
-          fi
-        done
-
     - name: Build and release manually-selected versions
       if: github.event_name == 'workflow_dispatch'
       run: |
