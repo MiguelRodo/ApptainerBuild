@@ -7,5 +7,5 @@ if [ -d "/tmp/DevContainerFeatures" ]; then
 else
     git clone https://github.com/MiguelRodo/DevContainerFeatures.git /tmp/DevContainerFeatures
 fi
-/tmp/DevContainerFeatures/src/mult-repos/install.sh
+/tmp/DevContainerFeatures/src/repos/install.sh
 rm -rf /tmp/DevContainerFeatures

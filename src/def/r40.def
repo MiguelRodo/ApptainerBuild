@@ -11,7 +11,7 @@ From: rocker/verse:4.0.5
     src/install/install-git.sh
     src/install/install-git-xet.sh
     src/install/install-gh.sh
-    src/install/install-mult-repos.sh
+    src/install/install-repos.sh
     src/install/install-login.sh
 
 %post
@@ -24,6 +24,6 @@ From: rocker/verse:4.0.5
     src/install/install-git.sh
     src/install/install-git-xet.sh
     src/install/install-gh.sh
-    src/install/install-mult-repos.sh
+    src/install/install-repos.sh
     src/install/install-login.sh
     apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
