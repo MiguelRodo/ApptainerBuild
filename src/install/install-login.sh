@@ -2,10 +2,10 @@
 
 set -e
 
-# add github-login script to
+# add login-github script to
 # enable plain-text credential store
 
-cat > /usr/local/bin/github-login \
+cat > /usr/local/bin/login-github \
 << 'EOF'
 #!/usr/bin/env bash
 
@@ -37,4 +37,14 @@ rm $temp_file
 
 EOF
 
-chmod +x /usr/local/bin/github-login
+chmod +x /usr/local/bin/login-github
+
+## login to XetHub
+
+cat > /usr/local/bin/login-xethub\
+<< 'EOF'
+#!/usr/bin/env bash
+git xet login -u "$XETHUB_USERNAME" -e "$XETHUB_EMAIL" -p "$XETHUB_TOKEN"
+EOF
+
+chmod +x /usr/local/bin/login-xethub
