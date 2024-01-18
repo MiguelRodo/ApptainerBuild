@@ -10,6 +10,8 @@ From: ghcr.io/rocker-org/devcontainer/geospatial:4.1
     src/install/install-git.sh
     src/install/install-git-xet.sh
     src/install/install-gh.sh
+    src/install/install-mult-repos.sh
+    src/install/install-github-login.sh
 
 %post
     set -e
@@ -20,4 +22,6 @@ From: ghcr.io/rocker-org/devcontainer/geospatial:4.1
     src/install/install-git.sh
     src/install/install-git-xet.sh
     src/install/install-gh.sh
+    src/install/install-mult-repos.sh
+    src/install/install-github-login.sh
     apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
