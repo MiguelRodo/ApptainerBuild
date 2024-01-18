@@ -10,6 +10,7 @@ From: rocker/verse:4.0.5
     src/install/install-vscode.sh
     src/install/install-git.sh
     src/install/install-git-xet.sh
+    src/install/install-gh.sh
 
 %post
     set -e
@@ -20,4 +21,5 @@ From: rocker/verse:4.0.5
     src/install/install-r-radian.sh
     src/install/install-git.sh
     src/install/install-git-xet.sh
+    src/install/install-gh.sh
     apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
