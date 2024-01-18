@@ -2,8 +2,10 @@
 
 set -e
 
-pushd /tmp
-git clone https://github.com/MiguelRodo/DevContainerFeatures.git
-DevContainerFeatures/src/install/install-mult-repos.sh
-rm -rf DevContainerFeatures.git
-popd
+if [ -d "/tmp/DevContainerFeatures" ]; then
+    git -C /tmp/DevContainerFeatures pull
+else
+    git clone https://github.com/MiguelRodo/DevContainerFeatures.git /tmp/DevContainerFeatures
+fi
+/tmp/DevContainerFeatures/src/mult-repos/install.sh
+rm -rf /tmp/DevContainerFeatures
