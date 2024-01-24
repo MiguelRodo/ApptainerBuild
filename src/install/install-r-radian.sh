@@ -7,12 +7,12 @@ install2.r --error --skipinstalled --ncpus -1 \
     jsonlite \
     devtools \
     usethis \
-    yaml \
+    yaml
 if ! [ "$1" == 36 ]; then
     install2.r --error --skipinstalled --ncpus -1 \
         languageserver \
         httpgd \
         renv \
-        yaml \
+        yaml
 fi
 rm -rf /tmp/downloaded_packages
