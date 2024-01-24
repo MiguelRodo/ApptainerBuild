@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: ghcr.io/rocker-org/devcontainer/geospatial:4.2
+From: rocker/verse:4.2
 
 %environment
     export APPTAINER_BUILD_DATE=date
