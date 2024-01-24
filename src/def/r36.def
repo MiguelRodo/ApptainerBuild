@@ -6,7 +6,7 @@ From: rocker/verse:3.6
 
 %files
     src/install/install-r-libs.sh
-    src/install/install-r-radian-363.sh
+    src/install/install-r-radian.sh
     src/install/install-gh.sh
     src/install/install-repos.sh
 
