@@ -2,6 +2,7 @@
 set -e
 apt-get install -y \
   fonts-roboto \
+  imagemagick \
   libcairo2-dev \
   libclang-dev \
   libcurl4-openssl-dev \
