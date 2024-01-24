@@ -15,7 +15,7 @@ From: rocker/verse:3.6
     apt-get update && export DEBIAN_FRONTEND=noninteractive
     apt-get upgrade -y
     src/install/install-r-libs.sh 36
-    src/install/install-r-radian-363.sh
+    src/install/install-r-radian.sh 36
     src/install/install-gh.sh
     src/install/install-repos.sh
     apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*

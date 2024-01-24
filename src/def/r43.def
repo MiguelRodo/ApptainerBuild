@@ -7,6 +7,7 @@ From: rocker/verse:4.3
 %files
     src/install/install-r-libs.sh
     src/install/install-vscode.sh
+    src/install/install-r-radian.sh 
     src/install/install-git.sh
     src/install/install-git-xet.sh
     src/install/install-gh.sh
@@ -18,6 +19,7 @@ From: rocker/verse:4.3
     apt-get upgrade -y
     src/install/install-r-libs.sh 43
     src/install/install-vscode.sh
+    src/install/install-r-radian.sh 43
     src/install/install-git.sh
     src/install/install-git-xet.sh
     src/install/install-gh.sh

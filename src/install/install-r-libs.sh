@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 set -e
-if ! [ "$1" == 36 ]; then
-  apt-get update
-fi
+apt-get update
 apt-get install -y \
   fonts-roboto \
   libcairo2-dev \

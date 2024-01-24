@@ -19,7 +19,7 @@ From: rocker/verse:4.0
     apt-get upgrade -y
     src/install/install-r-libs.sh 40
     src/install/install-vscode.sh
-    src/install/install-r-radian.sh
+    src/install/install-r-radian.sh 40
     src/install/install-git.sh
     src/install/install-git-xet.sh
     src/install/install-gh.sh
