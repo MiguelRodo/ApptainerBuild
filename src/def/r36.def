@@ -12,6 +12,9 @@ From: rocker/verse:3.6.3
 
 %post
     set -e
+    echo "deb http://archive.debian.org/debian/ stretch main" > /etc/apt/sources.list
+    echo "deb-src http://archive.debian.org/debian/ stretch main" >> /etc/apt/sources.list
+    echo "Acquire::Check-Valid-Until false;" > /etc/apt/apt.conf.d/99no-check-valid-until
     apt-get update && export DEBIAN_FRONTEND=noninteractive
     apt-get upgrade -y
     src/install/install-r-libs.sh
