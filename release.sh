@@ -1,10 +1,25 @@
 #!/usr/bin/env bash
 
+# This script manages GitHub releases for a project involving R versions and
+# associated images. It takes two parameters: the R version and the image version.
+#
+# - If the R version is not provided, it exits. If it is, it formats it.
+# - If the image version is not specified, it defaults to "dev". However, if
+#   in the associated GitHub release a numbered asset exists, it appends "-dev"
+#   to that version number.
+#
+# It creates a GitHub release if it does not exist with tag
+# based on the R version.
+# It uploads a sif file with name a combination of the R version
+# and the image version.
+# 
+# GitHub releases with R version 4.3 are labelled as latest.
+
 set -e
 
-# parameter validation
-version_r_orig="$1"
-version_image="$2"
+# parameter validation 
+version_r_orig="$1" # The first argument is the original R version
+version_image="$2" # The first argument is the original R version
 
 # check input provided
 # ----------------
@@ -47,9 +62,8 @@ version_r_dotless="${version_r_dot//./}"
 # format image version
 # ---------------- 
 
-
 # create the release with the asset if it does not exist
-release_tag=r"$version_r_dot".x
+release_tag=r"$version_r_dot".x # Define the release tag
 
 if ! gh release view "$release_tag" > /dev/null 2>&1; then
     # create the release
