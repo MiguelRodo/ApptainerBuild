@@ -54,6 +54,7 @@ if ! [[ "$version_r_dot" =~ ^(3.6|4.0|4.1|4.2|4.3)$ ]]; then
     echo "Version must be one of 3.6, 4.1, 4.2, 4.3 (with or without dot)."
     echo "For each of these, the latest patch version is used."
     echo "For example, 3.6 refers to the latest 3.6.x version, which is 3.6.3."
+    exit 1
 fi
 
 # get version without dot
@@ -83,15 +84,22 @@ if ! gh release view "$release_tag" > /dev/null 2>&1; then
 fi
 
 # Check if tag_release is "dev" or follows the format "v1.0"
-asset_name_base_suffixless="r${version_r_dotless}x" # without version or extension
+# without version or extension
+asset_name_base_suffixless="r${version_r_dotless}x" 
 asset_path_orig="sif/${asset_name_base_suffixless}.sif"
 if [[ "$version_image" == "dev" ]]; then
     echo "Image version is valid"
     # format asset name for upload
     # Check for the existence of a numbered asset
-    if gh release view "$release_tag" | grep -q "${asset_name_base_suffixless}-v[0-9]*.sif"; then
+    if gh release view "$release_tag" | \
+        grep -q "${asset_name_base_suffixless}-v[0-9]*.sif"; then
         # If a numbered asset exists, get the version number
-        version_number=$(gh release view "$release_tag" | grep -o "${asset_name_base_suffixless}-v\([0-9]*\)\.sif" | grep -o '[0-9]*' | tail -n 1)
+        version_number=$(gh release view "$release_tag" | \
+            grep -o "${asset_name_base_suffixless}-v\([0-9]*\)\.sif" | \
+            grep -o 'v\([0-9]*\)' | \
+            grep -o '[0-9]*' | \
+            sort -nr | \
+            head -n 1)
         # Append "-dev" to the version number
         version_image_dot="v${version_number}-dev"
     else
@@ -120,13 +128,20 @@ version_image_dotless="${version_image_dot//./}"
 
 # get final asset name:
 asset_path_final="sif/r${version_r_dotless}x-${version_image_dotless}.sif"
+if [ ! -f "$asset_path_orig" ]; then
+    echo "Error: File $asset_path_orig does not exist."
+    exit 1
+fi
 cp "$asset_path_orig" "$asset_path_final"
 
 asset_name_base="$(basename "$asset_path_final")"
 # delete image if it already exists
 if gh release view "$release_tag" | grep -q "$asset_name_base"; then
     echo "Deleting previous release asset $asset_name_base"
-    gh release delete-asset "$release_tag" "$asset_name_base" -y
+    if ! gh release delete-asset "$release_tag" "$asset_name_base" -y; then
+        echo "Error: Failed to delete asset $asset_name_base"
+        exit 1
+    fi
 fi
 
 # upload the .sif file to the release
