@@ -30,5 +30,7 @@ version_dotless="${version_dot//./}"
 
 # build the image
 # --------------------
+mkdir -p /tmp/sif
+apptainer build -F "/tmp/sif/r${version_dotless}x.sif" "src/def/r${version_dotless}.def"
 mkdir -p sif
-apptainer build -F "sif/r${version_dotless}x.sif" "src/def/r${version_dotless}.def"
+cp "/tmp/sif/r${version_dotless}x.sif" "sif/r${version_dotless}x.sif"
