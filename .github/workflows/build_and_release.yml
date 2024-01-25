@@ -15,10 +15,10 @@ on:
         description: "R versions to build (36, 40, 41, 42, 43 valid)"
         required: true
         default: "36,40,41,42,43"
-        version_image:
-          description: "Version of image (vx.y or dev valid)"
-          required: true
-          default: "dev"
+      version_image:
+        description: "Version of image (vx.y or dev valid)"
+        required: true
+        default: "dev"
 
 jobs:
   build:
