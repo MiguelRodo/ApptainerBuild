@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 set -e
+if [ "$1" == "36" ]; then
+  echo "deb http://archive.debian.org/debian/ stretch main" > /etc/apt/sources.list
+  echo "deb-src http://archive.debian.org/debian/ stretch main" >> /etc/apt/sources.list
+  echo "Acquire::Check-Valid-Until false;" > /etc/apt/apt.conf.d/99no-check-valid-until
+fi
+
 apt-get update
 apt-get install -y \
   fonts-roboto \
@@ -16,12 +22,22 @@ apt-get install -y \
   locales \
   zlib1g
 
-if ! [ "$1" == 36 ]; then
+if [ "$1" == "36" ]; then
   apt-get install -y \
-    imagemagick \
+    libgit2-dev \
+    libcurl4-gnutls-dev
+else
+  apt-get install -y \
     libcurl4-openssl-dev \
     libgit2-dev \
     libglpk40 \
     libsodium-dev \
     libudunits2-dev
 fi
+
+apt-get install -y \
+  imagemagick \
+  libgit2-dev \
+  libglpk40 \
+  libsodium-dev \
+  libudunits2-dev
