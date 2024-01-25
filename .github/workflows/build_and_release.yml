@@ -38,8 +38,12 @@ jobs:
       run: |
         echo "Creating new images for manually-selected versions"
         set -e
-        IFS=',' read -ra VERSIONS <<< "${{ github.event.inputs.version }}"
-        for VERSION in "${VERSIONS[@]}"; do
-          echo "Building version $VERSION"
-          ./build_and_release.sh $VERSION
+        IFS=',' read -ra VERSIONS_R <<< "${{ github.event.inputs.version_r }}"
+        for VERSION_R in "${VERSIONS_R[@]}"; do
+          echo "Building version $VERSION_R"
+          IFS=',' read -ra VERSIONS_IMAGE <<< "${{ github.event.inputs.version_image }}"
+          for VERSION_IMAGE in "${VERSIONS_IMAGE[@]}"; do
+            echo "Building version $VERSION_R with image $VERSION_IMAGE"
+            ./build_and_release.sh "$VERSION_R" "$VERSION_IMAGE"
+          done
         done
