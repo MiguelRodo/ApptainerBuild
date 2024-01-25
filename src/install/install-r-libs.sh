@@ -9,14 +9,18 @@ fi
 apt-get update
 apt-get install -y \
   fonts-roboto \
+  imagemagick \
   libcairo2-dev \
   libclang-dev \
   libfontconfig1-dev \
   libfreetype6-dev \
+  libglpk40 \
   libicu-dev \
   libicu[0-9][0-9] \
+  libsodium-dev \
   libssl-dev \
   libstdc++6 \
+  libudunits2-dev \
   libxml2-dev \
   libxt-dev \
   locales \
@@ -28,16 +32,6 @@ if [ "$1" == "36" ]; then
     libcurl4-gnutls-dev
 else
   apt-get install -y \
-    libcurl4-openssl-dev \
     libgit2-dev \
-    libglpk40 \
-    libsodium-dev \
-    libudunits2-dev
+    libcurl4-openssl-dev
 fi
-
-apt-get install -y \
-  imagemagick \
-  libgit2-dev \
-  libglpk40 \
-  libsodium-dev \
-  libudunits2-dev
