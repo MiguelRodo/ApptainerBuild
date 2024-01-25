@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: rocker/verse:4.0.5
+From: rocker/verse:4.0
 
 %environment
     export APPTAINER_BUILD_DATE=date
@@ -17,9 +17,9 @@ From: rocker/verse:4.0.5
     set -e
     apt-get update && export DEBIAN_FRONTEND=noninteractive
     apt-get upgrade -y
-    src/install/install-r-libs.sh
+    src/install/install-r-libs.sh 40
     src/install/install-vscode.sh
-    src/install/install-r-radian.sh
+    src/install/install-r-radian.sh 40
     src/install/install-git.sh
     src/install/install-git-xet.sh
     src/install/install-gh.sh
