@@ -122,5 +122,5 @@ asset_upload() {
     # upload the .sif file to the release
     echo "Uploading $basename_sif_final to release $release_tag"
     gh release upload "$release_tag" "$path_sif_final"
-    # rm -rf "$path_sif_final"
+    rm -rf "$path_sif_final"
 }
