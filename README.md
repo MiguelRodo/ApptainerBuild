@@ -14,11 +14,19 @@ replacing <major> and <major> with the major and minor versions, respectively.
 The following will download images with R versions 4.3.2, 4.2.3, 4.1.3, 4.0.5 and 3.6.3, respectively:
 
 ```
-wget https://github.com/MiguelRodo/ApptainerBuildR/releases/download/r3.6.x/r36x.sif # 3.6.3
-wget https://github.com/MiguelRodo/ApptainerBuildR/releases/download/r4.0.x/r40x.sif # 4.0.5
-wget https://github.com/MiguelRodo/ApptainerBuildR/releases/download/r4.1.x/r41x.sif # 4.1.3
-wget https://github.com/MiguelRodo/ApptainerBuildR/releases/download/r4.2.x/r42x.sif # 4.2.3
-wget https://github.com/MiguelRodo/ApptainerBuildR/releases/download/r4.3.x/r43x.sif # 4.3.2
+wget https://github.com/MiguelRodo/ApptainerBuildR/releases/download/r3.6.x/r36x-v1.sif # 3.6.3
+wget https://github.com/MiguelRodo/ApptainerBuildR/releases/download/r4.0.x/r40x-v1.sif # 4.0.5
+wget https://github.com/MiguelRodo/ApptainerBuildR/releases/download/r4.1.x/r41x-v1.sif # 4.1.3
+wget https://github.com/MiguelRodo/ApptainerBuildR/releases/download/r4.2.x/r42x-v1.sif # 4.2.3
+wget https://github.com/MiguelRodo/ApptainerBuildR/releases/download/r4.3.x/r43x-v1.sif # 4.3.2
+```
+
+The following will download images with BioConductor versions 3.16, 3.17 and 3.18, respectively:
+
+```
+wget https://github.com/MiguelRodo/ApptainerBuildR/releases/download/bioc3.16/bioc316-v1.sif # 3.16
+wget https://github.com/MiguelRodo/ApptainerBuildR/releases/download/bioc3.17/bioc317-v1.sif # 3.17
+wget https://github.com/MiguelRodo/ApptainerBuildR/releases/download/bioc3.18/bioc318-v1.sif # 3.18
 ```
 
 ## Extending images
