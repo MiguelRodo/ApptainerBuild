@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -e
-if [ "$1" == "36" ]; then
+base_image_type="$1"
+version_base="$2"
+if [[ "$base_image_type" == "r" && "$version_base" == "36" ]]; then
   echo "deb http://archive.debian.org/debian/ stretch main" > /etc/apt/sources.list
   echo "deb-src http://archive.debian.org/debian/ stretch main" >> /etc/apt/sources.list
   echo "Acquire::Check-Valid-Until false;" > /etc/apt/apt.conf.d/99no-check-valid-until
@@ -26,7 +28,7 @@ apt-get install -y \
   locales \
   zlib1g
 
-if [ "$1" == "36" ]; then
+if [ "$base_image_type" == "r" && "$version_base" == "36" ]; then
   apt-get install -y \
     libgit2-dev \
     libcurl4-gnutls-dev

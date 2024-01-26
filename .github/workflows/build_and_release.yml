@@ -7,8 +7,12 @@ on:
         description: "R versions to build (36, 40, 41, 42, 43 valid)"
         required: true
         default: "36,40,41,42,43"
-      version_image:
-        description: "Version of image (vx.y or dev valid)"
+      version_bioc: 
+        description: "Bioconductor versions to build (3.16, 3.17, 3.18 valid)"
+        required: true
+        default: "3.16,3.17,3.18"
+      version_create:
+        description: "Version of image (vx (e.g. v1) or dev valid)"
         required: true
         default: "dev"
 
@@ -25,17 +29,31 @@ jobs:
     - name: Install apptainer
       run: .devcontainer/scripts/install-apptainer.sh
 
-    - name: Build and release manually-selected versions
+    - name: Build and release manually-selected versions of Rocker images
       if: github.event_name == 'workflow_dispatch'
       run: |
-        echo "Creating new images for manually-selected versions"
+        echo "Creating new images for manually-selected versions of Rocker images"
         set -e
-        IFS=',' read -ra VERSIONS_R <<< "${{ github.event.inputs.version_r }}"
-        for VERSION_R in "${VERSIONS_R[@]}"; do
-          echo "Building version $VERSION_R"
-          IFS=',' read -ra VERSIONS_IMAGE <<< "${{ github.event.inputs.version_image }}"
-          for VERSION_IMAGE in "${VERSIONS_IMAGE[@]}"; do
-            echo "Building version $VERSION_R with image $VERSION_IMAGE"
-            ./build_and_release.sh "$VERSION_R" "$VERSION_IMAGE"
+        IFS=',' read -ra VERSIONS_BASE <<< "${{ github.event.inputs.version_r }}"
+        for VERSION_BASE in "${VERSIONS_BASE[@]}"; do
+          echo "Building version $VERSION_BASE"
+          IFS=',' read -ra VERSIONS_CREATE <<< "${{ github.event.inputs.version_create }}"
+          for VERSION_CREATE in "${VERSIONS_CREATE[@]}"; do
+            echo "Building version $VERSIONS_CREATE"
+            ./build_and_release.sh r "$VERSION_BASE" "$VERSION_CREATE"
+          done
+        done
+    - name: Build and release manually-selected versions of BioConductor images
+      if: github.event_name == 'workflow_dispatch'
+      run: |
+        echo "Creating new images for manually-selected versions of Rocker images"
+        set -e
+        IFS=',' read -ra VERSIONS_BASE <<< "${{ github.event.inputs.version_bioc }}"
+        for VERSION_BASE in "${VERSIONS_BASE[@]}"; do
+          echo "Building version $VERSION_BASE"
+          IFS=',' read -ra VERSIONS_CREATE <<< "${{ github.event.inputs.version_create }}"
+          for VERSION_CREATE in "${VERSIONS_CREATE[@]}"; do
+            echo "Building version $VERSIONS_CREATE"
+            ./build_and_release.sh r "$VERSION_BASE" "$VERSION_CREATE"
           done
         done

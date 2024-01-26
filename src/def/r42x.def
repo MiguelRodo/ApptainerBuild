@@ -17,9 +17,9 @@ From: rocker/verse:4.2
     set -e
     apt-get update && export DEBIAN_FRONTEND=noninteractive
     apt-get upgrade -y
-    src/install/install-r-libs.sh 42
+    src/install/install-r-libs.sh r 42
     src/install/install-vscode.sh
-    src/install/install-r-radian.sh 42
+    src/install/install-r-radian.sh r 42
     src/install/install-git.sh
     src/install/install-git-xet.sh
     src/install/install-gh.sh

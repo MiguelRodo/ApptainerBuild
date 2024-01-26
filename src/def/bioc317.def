@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: rocker/verse:4.3
+From: bioconductor/bioconductor_docker:RELEASE_3_17
 
 %environment
     export APPTAINER_BUILD_DATE=date
@@ -17,9 +17,9 @@ From: rocker/verse:4.3
     set -e
     apt-get update && export DEBIAN_FRONTEND=noninteractive
     apt-get upgrade -y
-    src/install/install-r-libs.sh r 43
+    src/install/install-r-libs.sh bioc 317
     src/install/install-vscode.sh
-    src/install/install-r-radian.sh r 43
+    src/install/install-r-radian.sh bioc 317
     src/install/install-git.sh
     src/install/install-git-xet.sh
     src/install/install-gh.sh

@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-./build.sh $1 && ./release.sh $1 $2
+
+src/build/build.sh $1 $2 && src/build/release.sh $1 $2 $3

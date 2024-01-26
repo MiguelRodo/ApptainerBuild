@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 set -e
+base_image_type="$1"
+version_base="$2"
 apt-get update
 apt-get -y install apt-transport-https
 apt-get update
@@ -11,11 +13,8 @@ install2.r --error --skipinstalled --ncpus -1 \
     devtools \
     usethis \
     yaml
-if ! [ "$1" == 36 ]; then
+if ! [ "$base_image_type" == "r" && "$version_base" == "36" ]; then
     install2.r --error --skipinstalled --ncpus -1 \
         renv
-        # languageserver \
-        # httpgd \
-        # yaml
 fi
 rm -rf /tmp/downloaded_packages
