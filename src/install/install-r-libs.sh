@@ -28,7 +28,7 @@ apt-get install -y \
   locales \
   zlib1g
 
-if [ "$base_image_type" == "r" && "$version_base" == "36" ]; then
+if [[ "$base_image_type" == "r" && "$version_base" == "36" ]]; then
   apt-get install -y \
     libgit2-dev \
     libcurl4-gnutls-dev
