@@ -50,6 +50,6 @@ jobs:
           IFS=',' read -ra VERSIONS_CREATE <<< "${{ github.event.inputs.version_create }}"
           for VERSION_CREATE in "${VERSIONS_CREATE[@]}"; do
             echo "Building version $VERSIONS_CREATE"
-            ./build_and_release.sh r "$VERSION_BASE" "$VERSION_CREATE"
+            ./build_and_release.sh bioc "$VERSION_BASE" "$VERSION_CREATE"
           done
         done
