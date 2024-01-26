@@ -42,8 +42,10 @@ format_version "$1"
 
 # build the image
 # --------------------
-mkdir -p /tmp/sif
-apptainer build -F "/tmp/sif/${base_name_suffixless}.sif" "src/def/${base_name_suffixless}.def"
-mkdir -p sif
-mv "/tmp/sif/${base_name_suffixless}.sif" "sif/${base_name_suffixless}.sif"
-rm -rf /tmp/sif
+temp_dir=/tmp/sif
+mkdir -p ${temp_dir}
+apptainer build -F "${temp_dir}/${base_name_suffixless}.sif" "src/def/${base_name_suffixless}.def"
+final_dir=sif
+mkdir -p ${final_dir}
+mv "${temp_dir}/${base_name_suffixless}.sif" "${final_dir}/${base_name_suffixless}.sif"
+rm -rf "${temp_dir}"
