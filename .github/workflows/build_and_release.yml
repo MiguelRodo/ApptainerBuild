@@ -5,11 +5,9 @@ on:
     inputs:
       version_r:
         description: "R versions to build (36, 40, 41, 42, 43 valid)"
-        required: true
         default: "36,40,41,42,43"
       version_bioc: 
         description: "Bioconductor versions to build (3.16, 3.17, 3.18 valid)"
-        required: true
         default: "3.16,3.17,3.18"
       version_create:
         description: "Version of image (vx (e.g. v1) or dev valid)"
