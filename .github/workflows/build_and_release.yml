@@ -7,7 +7,7 @@ on:
         description: "R versions to build (36, 40, 41, 42, 43 valid; also 36,40,41,42,43 for all)"
       version_bioc: 
         description: "Bioconductor versions to build (3.16, 3.17, 3.18 valid; also 3.16,3.17,3.18 for all)"
-      version_create:
+      version_image:
         description: "Version of image (vx (e.g. v1) or dev valid)"
         required: true
         default: "dev"
@@ -30,13 +30,13 @@ jobs:
       run: |
         echo "Creating new images for manually-selected versions of Rocker images"
         set -e
-        IFS=',' read -ra VERSIONS_BASE <<< "${{ github.event.inputs.version_r }}"
-        for VERSION_BASE in "${VERSIONS_BASE[@]}"; do
-          echo "Building version $VERSION_BASE"
-          IFS=',' read -ra VERSIONS_CREATE <<< "${{ github.event.inputs.version_create }}"
-          for VERSION_CREATE in "${VERSIONS_CREATE[@]}"; do
-            echo "Building version $VERSIONS_CREATE"
-            ./build_and_release.sh r "$VERSION_BASE" "$VERSION_CREATE"
+        IFS=',' read -ra VERSIONS_RBIOC <<< "${{ github.event.inputs.version_r }}"
+        for VERSION_RBIOC in "${VERSIONS_RBIOC[@]}"; do
+          echo "Building version $VERSION_RBIOC"
+          IFS=',' read -ra VERSIONS_IMAGE <<< "${{ github.event.inputs.version_image }}"
+          for VERSION_IMAGE in "${VERSIONS_IMAGE[@]}"; do
+            echo "Building version $VERSIONS_IMAGE"
+            ./build_and_release.sh r "$VERSION_RBIOC" "$VERSION_IMAGE"
           done
         done
     - name: Build and release manually-selected versions of BioConductor images
@@ -44,12 +44,12 @@ jobs:
       run: |
         echo "Creating new images for manually-selected versions of Rocker images"
         set -e
-        IFS=',' read -ra VERSIONS_BASE <<< "${{ github.event.inputs.version_bioc }}"
-        for VERSION_BASE in "${VERSIONS_BASE[@]}"; do
-          echo "Building version $VERSION_BASE"
-          IFS=',' read -ra VERSIONS_CREATE <<< "${{ github.event.inputs.version_create }}"
-          for VERSION_CREATE in "${VERSIONS_CREATE[@]}"; do
-            echo "Building version $VERSIONS_CREATE"
-            ./build_and_release.sh bioc "$VERSION_BASE" "$VERSION_CREATE"
+        IFS=',' read -ra VERSIONS_RBIOC <<< "${{ github.event.inputs.version_bioc }}"
+        for VERSION_RBIOC in "${VERSIONS_RBIOC[@]}"; do
+          echo "Building version $VERSION_RBIOC"
+          IFS=',' read -ra VERSIONS_IMAGE <<< "${{ github.event.inputs.version_image }}"
+          for VERSION_IMAGE in "${VERSIONS_IMAGE[@]}"; do
+            echo "Building version $VERSIONS_IMAGE"
+            ./build_and_release.sh bioc "$VERSION_RBIOC" "$VERSION_IMAGE"
           done
         done

@@ -17,45 +17,50 @@
 #
 # - first position parameter: r or bioc (base image type)
 # - second positional parameter: version.
-# if r, specifies r version, and
-# must be one of 3.6, 4.1, 4.2, 4.3 (with or without dot).
-# if bioc, specific BioConductor version, andE
-# must be one of 3.16, 3.17, 3.18 (with or without dot). 
-# In either case, latest available path version is used
-# compatible with the specified version.
-# - third positional parameter: image version.
-# must be "dev" or follow the format "vx.y", e.g. "v1.0" (with or with dots).
 
-set -e
+echo "---------------------------------"
+echo "Script release.sh started"
 
-base_image_type="$1"
-version_base="$2"
-version_create="$3"
+base_image="$1"
+version_rbioc="$2"
+version_image="$3"
 
-# format input provided
-# ----------------
+echo "Base image type: $base_image"
+echo "Version base: $version_rbioc"
+echo "Version image: $version_image"
 
-source src/build/cmd-format.sh
-source src/build/cmd-release.sh
+source src/build/fn/cmd-format.sh
+source src/build/fn/cmd-release.sh
 
-# get version_dot and version_dotless
-format_version_base "$version_base"
+# get base version (R/Bioc version)
+# as $version_rbioc_dotless
+format_version_rbioc "$version_rbioc"
+check_version_rbioc "$version_rbioc_dot"
+check_version_rbioc "$version_rbioc_dotless"
 
-# get base name without any suffix (no image version, no extension)
-format_base_name_suffixless "$base_image_type" "$version_base_dotless"
+# get image name (i.e. file name) without any suffix
+format_file_name_suffixless \
+    "$base_image" \
+    "$version_rbioc_dotless"
 
-# create the release with the asset if it does not exist
-release_create "$base_image_type" "$version_base_dot"
+echo "Version rbioc dotless: $version_rbioc_dotless"
+echo "File name suffixless: $file_name_suffixless"
 
-# get version_create
-format_version_create "$version_create" \
-    "$release_tag" "$base_name_suffixless"
+# create the release
+release_create "$base_image" "$version_rbioc_dot"
+
+# get version_image
+format_version_image "$version_image" \
+    "$release_tag" "$file_name_suffixless"
 
 # get path_sif_orig and path_sif_final
-get_path_sif "$base_name_suffixless" "$version_create"
+get_path_sif "$file_name_suffixless" "$version_image"
 
 # delete asset if it already exists
 asset_delete "$release_tag" "$path_sif_final"
 
 # upload the asset
 asset_upload "$release_tag" "$path_sif_orig" "$path_sif_final"
+
+echo "Script release.sh finished"
+echo "---------------------------------"

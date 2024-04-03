@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
-base_image_type="$1"
-version_base="$2"
+base_image="$1"
+version_rbioc="$2"
 apt-get update
 apt-get -y install apt-transport-https
 apt-get update
@@ -13,7 +13,7 @@ install2.r --error --skipinstalled --ncpus -1 \
     devtools \
     usethis \
     yaml
-if ! [ "$base_image_type" == "r" && "$version_base" == "36" ]; then
+if ! [ "$base_image" == "r" && "$version_rbioc" == "36" ]; then
     install2.r --error --skipinstalled --ncpus -1 \
         renv
 fi
