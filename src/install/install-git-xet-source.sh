@@ -27,7 +27,8 @@ sh rustup-init.sh -y
 rm rustup-init.sh
 cd rust
 $HOME/.cargo/bin/cargo build --release
-cp rust/targets/release/* /usr/local/bin
+mkdir -p /usr/local/bin
+cp rust/target/release/git-xet /usr/local/bin/
 git-xet install
 popd
 echo "xet-core installed"
