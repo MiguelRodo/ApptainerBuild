@@ -26,7 +26,7 @@ curl --proto '=https' --tlsv1.2 -sSf -o rustup-init.sh https://sh.rustup.rs
 sh rustup-init.sh -y
 rm rustup-init.sh
 cd rust
-$HOME/.cargo/bin/cargo build --release
+$HOME/.cargo/bin/cargo build --release --features openssl_vendored
 mkdir -p /usr/local/bin
 cp rust/target/release/git-xet /usr/local/bin/
 git-xet install
