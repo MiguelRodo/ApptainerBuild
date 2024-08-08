@@ -1,5 +1,5 @@
 {
-	"image": "mcr.microsoft.com/devcontainers/javascript-node:1-18-bullseye",
+	"image": "mcr.microsoft.com/devcontainers/universal:latest",
 	"customizations": {
 		"vscode": {
 			"settings": {
@@ -13,7 +13,11 @@
 				]
 			},
 			"extensions": [
-				"mads-hartmann.bash-ide-vscode"
+				"mads-hartmann.bash-ide-vscode",
+				"dbaeumer.vscode-eslint",
+				"esbenp.prettier-vscode",
+				"GitHub.copilot",
+				"Github.copilot-chat"
 			]
 		}
 	},
@@ -21,6 +25,5 @@
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
 		"ghcr.io/MiguelRodo/DevContainerFeatures/apptainer": {}
 	},
-	"remoteUser": "node",
 	"updateContentCommand": "npm install -g @devcontainers/cli"
 }
