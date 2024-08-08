@@ -156,7 +156,7 @@ upload_apptainer_release() {
   gh auth login --with-token < /tmp/gh_token
   rm /tmp/gh_token
   # Upload apptainer image as a release
-  gh release upload "$GITHUB_REPO" "$SIF_FILE"
+  gh release upload "$GITHUB_USER/$GITHUB_REPO" "$SIF_FILE"
   # Delete apptainer image locally
   rm "$SIF_FILE"
   echo "Successfully uploaded Apptainer image $SIF_FILE to GitHub release"
