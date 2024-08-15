@@ -8,21 +8,22 @@ usage() {
     echo "  -r <github_repo>  : GitHub repository (optional, defaults to basename of current directory)"
     echo "  -b <branch>       : Branch name (optional)"
     echo "  -u <github_user>  : GitHub user/org (optional, defaults to GITHUB_USERNAME environment variable)"
-    echo "  -c                : devcontainer.json path, within the cloned repo (optional, defaults to '.devcontainer/devcontainer.json')"
+    echo "  -c                : devcontainer.json path, within the cloned repo (optional, defaults to default of `devcontainer build`)"
     echo "  -i <image_name>   : Image name (optional, defaults to basename of current directory. Forced to lower case.)"
     echo "  -t <tag>          : Tag (optional, defaults to 'latest')"
-    echo "  -a                : Upload Apptainer image (optional)"
-    echo "  -d                : Upload Docker image (optional)"
+    echo "  -a                : Do not upload Apptainer image as a GitHub release (optional, defaults to uploading)"
+    echo "  -d                : Do not upload Docker image to GitHub container registry (optional, defaults to uploading)"
     echo "  -h                : Show this help message"
     exit 1
 }
 
 # Initialize flags
-UPLOAD_APPTAINER=false
-UPLOAD_DOCKER=false
 BRANCH=""
 GITHUB_USER="$GITHUB_USERNAME"
 DEVCONTAINER_JSON=""
+# Initialize flags with default behavior set to true
+UPLOAD_APPTAINER=true
+UPLOAD_DOCKER=true
 
 # Parse named parameters
 while getopts ":r:u:b:c:i:t:ad:h" opt; do
@@ -35,6 +36,7 @@ while getopts ":r:u:b:c:i:t:ad:h" opt; do
             ;;
         b )
             BRANCH=$OPTARG
+            ;;
         c ) 
             DEVCONTAINER_JSON=$OPTARG
             ;;
@@ -45,10 +47,10 @@ while getopts ":r:u:b:c:i:t:ad:h" opt; do
             TAG=$OPTARG
             ;;
         a )
-            UPLOAD_APPTAINER=true
+            UPLOAD_APPTAINER=false
             ;;
         d )
-            UPLOAD_DOCKER=true
+            UPLOAD_DOCKER=false
             ;;
         h )
             usage
@@ -59,6 +61,7 @@ while getopts ":r:u:b:c:i:t:ad:h" opt; do
             ;;
     esac
 done
+
 
 # Set default values if not provided
 TAG=${TAG:-latest}
